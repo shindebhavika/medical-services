@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sass/main.css">
+    <title>Login Form</title>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+        <div class="register-link">
+            <p>Not registered? <a href="./register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <script>
+      function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Simple validation
+            if (username === "" || password === "") {
+                alert("Please enter both username and password.");
+                return false;
+            }
+
+            // Retrieve user details from local storage
+            var storedUser = localStorage.getItem("user");
+            if (!storedUser) {
+                alert("No registered user found. Please register first.");
+                return false;
+            }
+
+            var user = JSON.parse(storedUser);
+
+            // Check credentials
+            if (username === user.username && password === atob(user.password)) {
+                // Credentials are correct
+                alert("Login successful!");
+                window.location.href = "./appointment.html"; // Redirect to app.html
+                return false; // Prevent form submission
+            } else {
+                alert("Invalid username or password.");
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</body>
+</html>
