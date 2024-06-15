@@ -184,11 +184,14 @@ img {
 .customer-list {
   @include flex-center;
   flex-wrap: wrap;
+ 
 }
-
+.customer{
+  background-color: red;
+}
 .customer {
-  width: 220px;
-  height: 600px;
+  width: 320px;
+  height: 500px;
   background: $white;
   border-top-right-radius: 10px;
   overflow: hidden;
@@ -434,8 +437,10 @@ h2, h3 {
   width: 70%;
   margin: $margin auto;
   padding: $padding;
-  text-align: center;
+  // text-align: center;
   background-color: #f9f9f9;
+  
+ 
 }
 
 // Services Section Styles
